@@ -1,0 +1,918 @@
+{
+	"info": {
+		"_postman_id": "ad730d26-6860-4ba5-b022-ad0d286f1213",
+		"name": "Simple Books API Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36580370"
+	},
+	"item": [
+		{
+			"name": "Get All Books",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "6f4b08fffaac55a5f14c8d2c2f16a3f762c0ca2af6ae36f3640f16dab2fae3a4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/books",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getting Authorization",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"clientName\": \"Postman\",\r\n   \"clientEmail\": \"fariya123@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api-clients/",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api-clients",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Creating Order",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const randomCustomerName = \"Customer \" + Math.floor(Math.random() * 1000);\r",
+							"pm.variables.set(\"customerName\", randomCustomerName);\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "6f4b08fffaac55a5f14c8d2c2f16a3f762c0ca2af6ae36f3640f16dab2fae3a4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"bookId\": \"1\",\r\n    \"customerName\": \"{{customerName}}\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/orders",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Status of the API",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/status",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Books By Type",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/books?type=fiction",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"books"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "fiction",
+							"description": "fiction"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Book By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/books/5",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"books",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Orders",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "6f4b08fffaac55a5f14c8d2c2f16a3f762c0ca2af6ae36f3640f16dab2fae3a4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/orders",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get A Created Order",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "6f4b08fffaac55a5f14c8d2c2f16a3f762c0ca2af6ae36f3640f16dab2fae3a4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/orders/KRdBHx-82HvGp2so_GhgG",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"orders",
+						"KRdBHx-82HvGp2so_GhgG"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Updating Customer Name",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "6f4b08fffaac55a5f14c8d2c2f16a3f762c0ca2af6ae36f3640f16dab2fae3a4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"customerName\": \"Rija\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/orders/KRdBHx-82HvGp2so_GhgG",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"orders",
+						"KRdBHx-82HvGp2so_GhgG"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Checking Updated Order",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "6f4b08fffaac55a5f14c8d2c2f16a3f762c0ca2af6ae36f3640f16dab2fae3a4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/orders/KRdBHx-82HvGp2so_GhgG",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"orders",
+						"KRdBHx-82HvGp2so_GhgG"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deleting An Order",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "6f4b08fffaac55a5f14c8d2c2f16a3f762c0ca2af6ae36f3640f16dab2fae3a4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/orders/j81rlPLryqPjOpAQn_6sN",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"orders",
+						"j81rlPLryqPjOpAQn_6sN"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Checking Deleted Order",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "6f4b08fffaac55a5f14c8d2c2f16a3f762c0ca2af6ae36f3640f16dab2fae3a4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/orders/j81rlPLryqPjOpAQn_6sN",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"orders",
+						"j81rlPLryqPjOpAQn_6sN"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Generating Random Customer Name",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const randomCustomerName = \"Customer \" + Math.floor(Math.random() * 1000);\r",
+							"pm.variables.set(\"customerName\", randomCustomerName);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "6f4b08fffaac55a5f14c8d2c2f16a3f762c0ca2af6ae36f3640f16dab2fae3a4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"bookId\": \"1\",\r\n    \"customerName\": \"{{customerName}}\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/orders",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Updating Customer Name Randomly",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const randomCustomerName = \"Patched Customer \" + Math.floor(Math.random() * 1000);\r",
+							"pm.variables.set(\"randomCustomerName\", randomCustomerName);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "6f4b08fffaac55a5f14c8d2c2f16a3f762c0ca2af6ae36f3640f16dab2fae3a4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"customerName\": \"Patched Customer {{$randomCustomerName}}\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/orders/hljEpQj0dK9eZAXdI880r",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"orders",
+						"hljEpQj0dK9eZAXdI880r"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Parsing JSON and Logging Book Name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let responseBody = pm.response.json();\r",
+							"console.log(\"Name of the first book: \" + responseBody[0].name);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"packages": {},
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/books",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logging Order ID",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let responseBody = pm.response.json();\r",
+							"console.log(\"Order ID: \" + responseBody.orderId);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "6f4b08fffaac55a5f14c8d2c2f16a3f762c0ca2af6ae36f3640f16dab2fae3a4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"bookId\": \"1\",\r\n    \"customerName\": \"Ayesha\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/orders",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logging Update Status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.text() === '') {\r",
+							"    console.log(\"Error: Empty response body\");\r",
+							"} else {\r",
+							"    try {\r",
+							"        let responseBody = pm.response.json();\r",
+							"        console.log(\"Response Body:\", responseBody);\r",
+							"            if (responseBody.updated) {\r",
+							"            console.log(\"Order updated successfully:\", responseBody.updated);\r",
+							"        } else {\r",
+							"            console.log(\"No update status found in response\");\r",
+							"        }\r",
+							"    } catch (error) {\r",
+							"        console.log(\"Error parsing JSON response:\", error.message);\r",
+							"    }\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "6f4b08fffaac55a5f14c8d2c2f16a3f762c0ca2af6ae36f3640f16dab2fae3a4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"customerName\": \"Ira\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/orders/LbY5hGaB965TGdBDykkDG",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"orders",
+						"LbY5hGaB965TGdBDykkDG"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Chai Assertion FOR GET",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.variables.set(\"baseUrl\", \"https://simple-books-api.glitch.me\");\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response should be an array\", function () {\r",
+							"    pm.expect(pm.response.json()).to.be.an('array');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify the first book's name\", function () {\r",
+							"    let books = pm.response.json();\r",
+							"    pm.expect(books[0].name).to.equal(\"The Russian\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/books",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Chai Assertion For POST",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Order created successfully\", function () {\r",
+							"    let response = pm.response.json();\r",
+							"    pm.expect(response.bookId).to.equal(\"5\");\r",
+							"    pm.expect(response.customerName).to.equal(\"Hareem\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "6f4b08fffaac55a5f14c8d2c2f16a3f762c0ca2af6ae36f3640f16dab2fae3a4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"bookId\": \"5\",\r\n    \"customerName\": \"Hareem\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/orders",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "A Failing Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const expect = require('chai').expect;\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Book updated successfully\", function () {\r",
+							"    let response = pm.response.json();\r",
+							"    expect(response.CustomerName).to.equal(\"This will deliberately fail\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "6f4b08fffaac55a5f14c8d2c2f16a3f762c0ca2af6ae36f3640f16dab2fae3a4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"customerName\": \"Buhsra\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/orders/LbY5hGaB965TGdBDykkDG",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"orders",
+						"LbY5hGaB965TGdBDykkDG"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Resetting Values in Test",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.variables.set(\"baseUrl\", \"https://simple-books-api.glitch.me\");\r",
+							"pm.variables.set(\"customerName\", \"Customer_\" + Math.floor(Math.random() * 1000));\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const expect = require('chai').expect;\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    expect(pm.response.code).to.equal(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Order created successfully\", function () {\r",
+							"    let response = pm.response.json();\r",
+							"    expect(response.created).to.be.true;\r",
+							"    expect(response.orderId).to.be.a('string');\r",
+							"});\r",
+							"\r",
+							"pm.variables.unset(\"customerName\");\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "6f4b08fffaac55a5f14c8d2c2f16a3f762c0ca2af6ae36f3640f16dab2fae3a4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"bookId\": \"4\",\r\n  \"customerName\": \"Haroon\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/orders",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://simple-books-api.glitch.me",
+			"type": "string"
+		}
+	]
+}
